@@ -113,3 +113,5 @@ friends: [
     #     href: "https://developer.apple.com/"
     # }
 ]
+
+gems: [jekyll-paginate]
