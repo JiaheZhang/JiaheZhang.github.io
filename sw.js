@@ -8,12 +8,12 @@
 
 const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
-const HOSTNAME_WHITELIST = [
-  self.location.hostname,
-  "huangxuan.me",
-  "yanshuo.io",
-  "cdnjs.cloudflare.com"
-]
+// const HOSTNAME_WHITELIST = [
+//   self.location.hostname,
+//   "huangxuan.me",
+//   "yanshuo.io",
+//   "cdnjs.cloudflare.com"
+// ]
 
 
 // The Util Function to hack URLs of intercepted requests
@@ -112,37 +112,37 @@ self.addEventListener('fetch', event => {
   //console.log(` - mode: ${event.request.mode}, accept: ${event.request.headers.get('accept')}`)
 
   // Skip some of cross-origin requests, like those for Google Analytics.
-  if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
+  // if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
     
-    // Redirect in SW manually fixed github pages 404s on repo?blah 
-    if(shouldRedirect(event.request)){
-      event.respondWith(Response.redirect(getRedirectUrl(event.request)))
-      return;
-    }
+  //   // Redirect in SW manually fixed github pages 404s on repo?blah 
+  //   if(shouldRedirect(event.request)){
+  //     event.respondWith(Response.redirect(getRedirectUrl(event.request)))
+  //     return;
+  //   }
 
-    // Stale-while-revalidate 
-    // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-    // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
-    const cached = caches.match(event.request);
-    const fixedUrl = getFixedUrl(event.request);
-    const fetched = fetch(fixedUrl, {cache: "no-store"});
-    const fetchedCopy = fetched.then(resp => resp.clone());
+  //   // Stale-while-revalidate 
+  //   // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
+  //   // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
+  //   const cached = caches.match(event.request);
+  //   const fixedUrl = getFixedUrl(event.request);
+  //   const fetched = fetch(fixedUrl, {cache: "no-store"});
+  //   const fetchedCopy = fetched.then(resp => resp.clone());
 
-    // Call respondWith() with whatever we get first.
-    // If the fetch fails (e.g disconnected), wait for the cache.
-    // If there’s nothing in cache, wait for the fetch. 
-    // If neither yields a response, return offline pages.
-    event.respondWith(
-      Promise.race([fetched.catch(_ => cached), cached])
-        .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
-    );
+  //   // Call respondWith() with whatever we get first.
+  //   // If the fetch fails (e.g disconnected), wait for the cache.
+  //   // If there’s nothing in cache, wait for the fetch. 
+  //   // If neither yields a response, return offline pages.
+  //   event.respondWith(
+  //     Promise.race([fetched.catch(_ => cached), cached])
+  //       .then(resp => resp || fetched)
+  //       .catch(_ => caches.match('offline.html'))
+  //   );
 
-    // Update the cache with the version we fetched (only for ok status)
-    event.waitUntil(
-      Promise.all([fetchedCopy, caches.open(RUNTIME)])
-        .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => {/* eat any errors */})
-    );
-  }
+  //   // Update the cache with the version we fetched (only for ok status)
+  //   event.waitUntil(
+  //     Promise.all([fetchedCopy, caches.open(RUNTIME)])
+  //       .then(([response, cache]) => response.ok && cache.put(event.request, response))
+  //       .catch(_ => {/* eat any errors */})
+  //   );
+  // }
 });
