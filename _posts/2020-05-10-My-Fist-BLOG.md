@@ -4,7 +4,7 @@ title:      My Fist BLOG
 subtitle:   hello
 date:       2020-05-10
 author:     Jiahe Zhang
-header-img: img/post-bg-cook.jpg
+header-img: img/test.jpg
 catalog: true
 tags:
     - Fist BLOG
