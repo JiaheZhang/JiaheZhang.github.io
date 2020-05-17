@@ -22,7 +22,8 @@ RSS: false
 # weibo_username:     qiubaiying
 researchgate_username:     Jiahe_Zhang8
 github_username:    JiaheZhang
-# facebook_username:  baiying.qiu.7
+linkedin_username: jiahe-zhang-22a35a186
+# facebook_username:  baiying.qiu
 # jianshu_username:   e71990ada2fd
 #twitter_username:   qiubaiying
 
@@ -106,5 +107,9 @@ friends: [
     {
         title: "Research Gate",
         href: "https://www.researchgate.net/profile/Jiahe_Zhang8"
+    },
+    {
+        title: "Linkedin",
+        href: "https://www.linkedin.com/in/jiahe-zhang-22a35a186/"
     }
 ]
