@@ -132,4 +132,5 @@ public class Test {
 BMW run!
 ```
 
-​		我们成功通过CarFactory这个工厂类购买到了BMW汽车！用户无需自己new一辆车！这里我们使用了静态工厂的方式，此外还有抽象工厂，也就是重新定义个工厂接口，这样能统一每一个工厂继承类。
+​		我们成功通过CarFactory这个工厂类购买到了BMW汽车！用户无需自己new一辆车！这里我们使用了静态工厂的方式，此外还有抽象工厂，也就是重新定义个工厂接口，这样能统一每一个工厂继承类。这时所有java文件如下图所示：
+![image](https://github.com/JiaheZhang/JiaheZhang.github.io/blob/master/img/factory.jpg)
