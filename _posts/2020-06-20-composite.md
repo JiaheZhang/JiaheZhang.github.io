@@ -2,7 +2,7 @@
 layout:     post
 title:      设计模式-组合模式
 subtitle:   Design Pattern - Composite Pattern
-date:       2020-05-23
+date:       2020-06-20
 author:     Jiahe Zhang
 header-img: img/dp-back.png
 catalog: true
